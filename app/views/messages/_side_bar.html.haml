@@ -1,0 +1,14 @@
+.users
+  .users__userName
+    kudou
+  .users__icon
+    =link_to "#", class: "users__icon__btn--edit" do
+      = icon("fas", "edit", class: "users__icon__btn--icon")
+    =link_to "#", class: "users__icon__btn--cog" do
+      = icon("fas", "cog", class: "users__icon__btn--icon")
+.groups
+  .groups__group
+    .groups__group__name
+      groupA
+    .groups__group__currentMessage
+      hello
