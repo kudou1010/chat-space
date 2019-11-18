@@ -1,14 +1,18 @@
 .side_bar
-  .side_bar__users
-    .side_bar__users__userName
-      kudou
-    =link_to "#", class: "side_bar__users__icon" do
-      = icon("fas", "edit", class: "side_bar__users__icon--edit")
-    =link_to "#", class: "side_bar__users__icon" do
-      = icon("fas", "cog", class: "side_bar__users__icon--cog")
-  .side_bar__groups
-    .side_bar__groups__group
-      .side_bar__groups__group__name
-        groupA
-      .side_bar__groups__group__currentMessage
-        hello
+  .users
+    .users__box
+      %p.users__box__name kudou
+      .users__box__icons
+        =link_to "#", class: "users__box__icons edit" do
+          %span<>
+            = icon("fa", "edit")
+        =link_to "#", class: "users__box__icons cog" do
+          %span<>
+            = icon("fas", "cog")
+  .groups
+    .groups__group
+      %p.groups__group__name groupA
+      %p.groups__group__currentMessage hello
+    .groups__group
+      %p.groups__group__name groupB
+      %p.groups__group__currentMessage hey
