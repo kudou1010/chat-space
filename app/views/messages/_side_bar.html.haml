@@ -1,0 +1,18 @@
+.side_bar
+  .users
+    .users__box
+      %p.users__box__name kudou
+      .users__box__icons
+        =link_to "#", class: "users__box__icons edit" do
+          %span<>
+            = icon("fa", "edit")
+        =link_to "#", class: "users__box__icons cog" do
+          %span<>
+            = icon("fas", "cog")
+  .groups
+    .groups__group
+      %p.groups__group__name groupA
+      %p.groups__group__currentMessage hello
+    .groups__group
+      %p.groups__group__name groupB
+      %p.groups__group__currentMessage hey

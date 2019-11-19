@@ -1,0 +1,33 @@
+.chatView
+  .header
+    .header__groups
+      .header__groups__groupName testgroup
+      .header__groups__memberNames
+        .header__groups__memberNames__memberTitle Member :
+        .header__groups__memberNames__memberName name1
+        .header__groups__memberNames__memberName name2
+    =link_to "Edit", "#", class: "header__btnEdit"
+
+  .main
+    .main__messages
+      .main__messages__message
+        .main__messages__message__heading
+          .main__messages__message__heading__name kudou
+          .main__messages__message__heading__date 2019/11/19 12:30:00
+        .main__messages__message__text test
+        .main__messages__message__image test.img
+      .main__messages__message
+        .main__messages__message__heading
+          .main__messages__message__heading__name kyohei
+          .main__messages__message__heading__date 2019/11/19 13:30:00
+        .main__messages__message__text test2
+        .main__messages__message__image test2.img
+
+  .forms
+    .forms__inputForm
+      .forms__inputForm__textForm
+        %input{placeholder: "type a message", class: "forms__inputForm__textForm__text"}
+        %label{class: "forms__inputForm__textForm__icon"}
+          = icon("far", "image")
+          %input{type: "file", class: "forms__inputForm__textForm__icon--default"}
+      %input{type: "submit", value: "Send", class: "forms__inputForm__btnSend"}
