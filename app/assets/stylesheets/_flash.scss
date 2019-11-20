@@ -1,0 +1,12 @@
+.flash {
+    text-align: center;
+
+  &__notice {
+    background-color: skyblue;
+
+  }
+
+  &__alert {
+    background-color: pink;
+  }
+}
