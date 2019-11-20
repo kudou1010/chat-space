@@ -1,7 +1,8 @@
 .side_bar
   .users
     .users__box
-      %p.users__box__name kudou
+      %p.users__box__name
+        = current_user.name
       .users__box__icons
         =link_to "#", class: "users__box__icons edit" do
           %span<>
