@@ -2,11 +2,13 @@
     text-align: center;
 
   &__notice {
-    background-color: skyblue;
+    color: $white;
+    background-color: $light_blue;
 
   }
 
   &__alert {
-    background-color: pink;
+    color: $white;
+    background-color: $alert_orange;
   }
 }
