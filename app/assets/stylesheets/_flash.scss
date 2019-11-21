@@ -1,0 +1,14 @@
+.flash {
+    text-align: center;
+
+  &__notice {
+    color: $white;
+    background-color: $light_blue;
+
+  }
+
+  &__alert {
+    color: $white;
+    background-color: $alert_orange;
+  }
+}
