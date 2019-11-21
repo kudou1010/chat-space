@@ -4,7 +4,7 @@
       %p.users__box__name
         = current_user.name
       .users__box__icons
-        =link_to "#", class: "users__box__icons edit" do
+        =link_to new_group_path, class: "users__box__icons edit" do
           %span<>
             = icon("fa", "edit")
         =link_to edit_user_path(current_user), class: "users__box__icons cog" do
