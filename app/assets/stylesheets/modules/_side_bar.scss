@@ -33,6 +33,9 @@
 
   &__group {
     margin-bottom: 40px;
+    display: inline-block;
+    text-decoration: none;
+    color: $white;
 
     &__name {
       font-size: 15px;
