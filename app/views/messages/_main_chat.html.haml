@@ -10,24 +10,25 @@
 
   .main
     .main__messages
-      .main__messages__message
-        .main__messages__message__heading
-          .main__messages__message__heading__name kudou
-          .main__messages__message__heading__date 2019/11/19 12:30:00
-        .main__messages__message__text test
-        .main__messages__message__image test.img
-      .main__messages__message
-        .main__messages__message__heading
-          .main__messages__message__heading__name kyohei
-          .main__messages__message__heading__date 2019/11/19 13:30:00
-        .main__messages__message__text test2
-        .main__messages__message__image test2.img
+      - @messages.each do |message|
+        .main__messages__message
+          .main__messages__message__heading
+            .main__messages__message__heading__name
+              = message.user.name
+            .main__messages__message__heading__date
+              = message.created_at
+          .main__messages__message__text
+            = message.body
+          .main__messages__message__image
+            = image_tag message.image
 
   .forms
-    .forms__inputForm
-      .forms__inputForm__textForm
-        %input{placeholder: "type a message", class: "forms__inputForm__textForm__text"}
-        %label{class: "forms__inputForm__textForm__icon"}
-          = icon("far", "image")
-          %input{type: "file", class: "forms__inputForm__textForm__icon--default"}
-      %input{type: "submit", value: "Send", class: "forms__inputForm__btnSend"}
+    = form_for [@group, @message] do |f|
+      .forms__inputForm
+        .forms__inputForm__textForm
+          = f.text_field :body, placeholder: "type a message", class: "forms__inputForm__textForm__text"
+          = f.label :image, class: "forms__inputForm__textForm__icon" do
+            = icon("far", "image", class: "image")
+            = f.file_field :image, class: "hidden"
+        = f.submit "Send", class: "forms__inputForm__btnSend"
+

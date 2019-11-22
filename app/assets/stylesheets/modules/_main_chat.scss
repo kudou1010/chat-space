@@ -2,7 +2,6 @@
   width: calc(100vw - 300px);
   height: 80px;
   float: right;
-
 }
 
 .header {
@@ -110,10 +109,10 @@
         top: 10px;
         cursor: pointer;
 
-        &--default {
+        .hidden {
           display: none;
         }
-      }
+      }     
     }
 
     &__btnSend {
