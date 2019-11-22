@@ -26,9 +26,9 @@
     = form_for [@group, @message] do |f|
       .forms__inputForm
         .forms__inputForm__textForm
-          = f.text_field :body, placeholder: "type a message", class: "forms__inputForm__textForm__text" do
-            = f.label :image, class: "forms__inputForm__textForm__icon" do
-              = icon("far", "image", class: "image")
-              = f.file_field :image, class: "hidden"
+          = f.text_field :body, placeholder: "type a message", class: "forms__inputForm__textForm__text"
+          = f.label :image, class: "forms__inputForm__textForm__icon" do
+            = icon("far", "image", class: "image")
+            = f.file_field :image, class: "hidden"
         = f.submit "Send", class: "forms__inputForm__btnSend"
 
