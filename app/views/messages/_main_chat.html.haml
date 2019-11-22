@@ -25,9 +25,15 @@
 
   .forms
     .forms__inputForm
-      .forms__inputForm__textForm
-        %input{placeholder: "type a message", class: "forms__inputForm__textForm__text"}
+      -# .forms__inputForm__textForm
+      -#   %input{placeholder: "type a message", class: "forms__inputForm__textForm__text"}
+      -#   %label{class: "forms__inputForm__textForm__icon"}
+      -#     = icon("far", "image")
+      -#     %input{type: "file", class: "forms__inputForm__textForm__icon--default"}
+      -# %input{type: "submit", value: "Send", class: "forms__inputForm__btnSend"}
+      = form_for [@group, @message] do |f|
+        = f.text_field :body, placeholder: "type a message", class: "forms__inputForm__textForm__text"
         %label{class: "forms__inputForm__textForm__icon"}
           = icon("far", "image")
-          %input{type: "file", class: "forms__inputForm__textForm__icon--default"}
-      %input{type: "submit", value: "Send", class: "forms__inputForm__btnSend"}
+          = f.file_field :image, class: "forms__inputForm__textForm__icon--default"
+        = f.submit "Send", class: "forms__inputForm__btnSend"
