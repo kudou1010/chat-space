@@ -1,0 +1,20 @@
+.side_bar
+  .users
+    .users__box
+      %p.users__box__name
+        = current_user.name
+      .users__box__icons
+        =link_to new_group_path, class: "users__box__icons edit" do
+          %span<>
+            = icon("fa", "edit")
+        =link_to edit_user_path(current_user), class: "users__box__icons cog" do
+          %span<>
+            = icon("fas", "cog")
+
+  .groups
+    - current_user.groups.each do |group|
+      = link_to group_messages_path(group), class: "groups__group" do
+        .groups__group__name
+          = group.name
+        .groups__group__currentMessage
+          メッセージはまだありません。
