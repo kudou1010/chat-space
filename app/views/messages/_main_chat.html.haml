@@ -20,7 +20,7 @@
           .main__messages__message__text
             = message.body
           .main__messages__message__image
-            = message.image
+            = image_tag message.image
 
   .forms
     = form_for [@group, @message] do |f|
