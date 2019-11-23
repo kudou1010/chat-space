@@ -13,9 +13,8 @@
 
   .groups
     - current_user.groups.each do |group|
-      = link_to group_messages_path(group) do
-        .groups__group
-          .groups__group__name
-            = group.name
-          .groups__group__currentMessage
-            = group.show_last_message
+      = link_to group_messages_path(group), class: "groups__group" do
+        .groups__group__name
+          = group.name
+        .groups__group__currentMessage
+          メッセージはまだありません。
