@@ -1,11 +1,13 @@
 .chatView
   .header
     .header__groups
-      .header__groups__groupName testgroup
+      .header__groups__groupName
+        = @group.name
       .header__groups__memberNames
         .header__groups__memberNames__memberTitle Member :
-        .header__groups__memberNames__memberName name1
-        .header__groups__memberNames__memberName name2
+        - @group.users.each do |user|
+          .header__groups__memberNames__memberName
+            = user.name
     =link_to "Edit", "#", class: "header__btnEdit"
 
   .main
