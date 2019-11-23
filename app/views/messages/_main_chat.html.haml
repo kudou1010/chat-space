@@ -8,7 +8,7 @@
         - @group.users.each do |user|
           .header__groups__memberNames__memberName
             = user.name
-    =link_to "Edit", "#", class: "header__btnEdit"
+    =link_to "Edit", edit_group_path(@group), class: "header__btnEdit"
 
   .main
     .main__messages
