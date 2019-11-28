@@ -1,5 +1,6 @@
 $(function(){
-  var search_User = $("#user-search-result");
+  var search_user = $("#user-search-result");
+  var chat_member = $(".js-add-user");
   function appendUser(user){
     var html = `
               <div class="chat-group-user clearfix">
@@ -11,13 +12,34 @@ $(function(){
                 </div>
               </div>
               `
-    search_User.append(html);
+    search_user.append(html);
   }
 
   function appendErrMsgToHTML(msg) {
     var html = `<div class="name">${msg}</div>`
-    search_User.append(html);
+    search_user.append(html);
   }
+
+  function  addDeleteUser(userName, userId){
+    var html = `
+            <div class='chat-group-user'>
+              <input name='group[user_ids][]' type='hidden' value=${userId}>
+              <p class='chat-group-user__name'>
+                ${userName}
+              </p>
+              <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>
+                削除
+              </div>
+            </div>
+            `
+    chat_member.append(html)
+  }
+
+  function addMember(userId) {
+    var html = `<input value="${userId}" name="group[user_ids][]" type="hidden" id="group_user_ids_${userId}" />`;
+    $(`#${userId}`).append(html);
+  }
+  
 
   $("#user-search-field").on("keyup", function(){
     var input = $("#user-search-field").val();
@@ -29,7 +51,7 @@ $(function(){
     })
 
     .done(function(users) {
-      $("#user-search-result").empty();
+      search_user.empty();
       if (users.length !== 0){
         users.forEach(function(user){
           appendUser(user);
@@ -43,4 +65,21 @@ $(function(){
       alert("ユーザー検索に失敗しました");
     })
   })
+
+  $(document).on("click", ".chat-group-user__btn--add", function(){
+    var userName = $(this).attr("data-user-name");
+    var userId = $(this).attr("data-user-id");
+    $(this)
+      .parent()
+      .remove();
+    addDeleteUser(userName, userId);
+    addMember(userId);
+  })
+
+  $(document).on("click", ".chat-group-user__btn--remove", function() {
+    $(this)
+      .parent()
+      .remove();
+  });
+
 });
