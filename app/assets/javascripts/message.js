@@ -6,7 +6,7 @@ $(function(){
                       </div>`
                       : "";
                       
-      var html = `<div class="main__messages__message">
+      var html = `<div class="main__messages__message" data-message_id=${message.id} >
                     <div class="main__messages__message__heading">
                       <div class="main__messages__message__heading__name">
                         ${message.name}
@@ -49,4 +49,32 @@ $(function(){
       alert("error");
     })
   })
+
+  var reloadMessages = function() {
+    //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
+    last_message_id = $(".main__messages__message").last().data("message_id");
+    var urls = location.href.split("/");
+    var group_id = urls[urls.length - 2];
+    $.ajax({
+      //ルーティングで設定した通り/groups/id番号/api/messagesとなるよう文字列を書く
+      url: `/groups/${group_id}/api/messages`,
+      //ルーティングで設定したりhttpメソッドをgetに指定
+      type: 'get',
+      dataType: 'json',
+      //dataオプションでリクエストに値を含める
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      var insertHTML = "";
+      $.each(messages, function(i, message){
+        insertHTML += buildHTML(message)
+      })
+      $(".main__messages").append(insertHTML);
+    })
+    .fail(function() {
+      console.log('error');
+    });
+  };
+
+
 });
