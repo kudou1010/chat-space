@@ -6,7 +6,7 @@ $(function(){
                       </div>`
                       : "";
                       
-      var html = `<div class="main__messages__message">
+      var html = `<div class="main__messages__message" data-message_id=${message.id} >
                     <div class="main__messages__message__heading">
                       <div class="main__messages__message__heading__name">
                         ${message.name}
@@ -49,4 +49,33 @@ $(function(){
       alert("error");
     })
   })
+
+  var reloadMessages = function() {
+    last_message_id = $(".main__messages__message").last().data("message_id");
+    var urls = location.href.split("/");
+    var group_id = urls[urls.length - 2];
+    $.ajax({
+      url: `/groups/${group_id}/api/messages`,
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      
+      var insertHTML = "";
+      $.each(messages, function(i, message){
+        insertHTML += buildHTML(message)
+      });
+
+      $(".main__messages").append(insertHTML);
+      $('.main').animate({ scrollTop: $('.main')[0].scrollHeight});
+    })
+    .fail(function() {
+      alert("error");
+    });
+  };
+
+  if(location.href.match(/messages/)) {
+    setInterval(reloadMessages, 7000);
+  }
 });
