@@ -69,7 +69,6 @@ $(function(){
 
       $(".main__messages").append(insertHTML);
       $('.main').animate({ scrollTop: $('.main')[0].scrollHeight});
-      console.log("発火");
     })
     .fail(function() {
       console.log('error');
