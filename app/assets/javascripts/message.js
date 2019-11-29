@@ -71,7 +71,7 @@ $(function(){
       $('.main').animate({ scrollTop: $('.main')[0].scrollHeight});
     })
     .fail(function() {
-      console.log('error');
+      alert("error");
     });
   };
 
