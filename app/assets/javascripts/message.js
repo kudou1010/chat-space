@@ -76,5 +76,7 @@ $(function(){
     });
   };
 
-  setInterval(reloadMessages, 7000);
+  if(location.href.match(/messages/)) {
+    setInterval(reloadMessages, 7000);
+  }
 });
