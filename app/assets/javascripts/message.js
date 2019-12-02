@@ -62,14 +62,15 @@ $(function(){
       data: {id: last_message_id}
     })
     .done(function(messages) {
-      
-      var insertHTML = "";
-      $.each(messages, function(i, message){
-        insertHTML += buildHTML(message)
-      });
+       if (messages.length > 0) {
+        var insertHTML = "";
+        $.each(messages, function(i, message){
+          insertHTML += buildHTML(message)
+        });
 
-      $(".main__messages").append(insertHTML);
-      $('.main').animate({ scrollTop: $('.main')[0].scrollHeight});
+        $(".main__messages").append(insertHTML);
+        $('.main').animate({ scrollTop: $('.main')[0].scrollHeight});
+      }
     })
     .fail(function() {
       alert("error");
