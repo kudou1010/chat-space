@@ -46,7 +46,8 @@ $(function(){
     })
     
     .fail(function(){
-      alert("error");
+      alert("メッセージを入力してください");
+      $('.forms__inputForm__btnSend').prop('disabled', false);
     })
   })
 
