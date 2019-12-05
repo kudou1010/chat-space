@@ -34,11 +34,6 @@ $(function(){
             `
     chat_member.append(html)
   }
-
-  function addMember(userId) {
-    var html = `<input value="${userId}" name="group[user_ids][]" type="hidden" id="group_user_ids_${userId}" />`;
-    $(`#${userId}`).append(html);
-  }
   
   function searchUser() {
     var input = $("#user-search-field").val();
@@ -83,7 +78,6 @@ $(function(){
       .parent()
       .remove();
     addDeleteUser(userName, userId);
-    addMember(userId);
   })
 
   $(document).on("click", ".chat-group-user__btn--remove", function() {
